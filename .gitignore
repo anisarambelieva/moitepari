@@ -1,0 +1,31 @@
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.userprefs
+
+# VS/IDE folders
+.vs/            # Visual Studio cache
+.vscode/        # VS Code workspace settings (optional)
+
+# MonoDevelop / Rider
+*.pidb
+*.userprefs
+.idea/
+
+# Build output
+**/bin/
+**/obj/
+
+# NuGet packages
+*.nupkg
+packages/
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Misc
+*.log
+*.tmp
