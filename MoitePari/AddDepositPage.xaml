@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="MoitePari.AddDepositPage"
+  Title="New Deposit">
+
+  <ScrollView>
+    <VerticalStackLayout Padding="20" Spacing="15">
+      <Entry x:Name="NameEntry" Placeholder="Product Name" />
+      <Entry x:Name="MinAmountEntry" Placeholder="Min Amount" Keyboard="Numeric" />
+      <Entry x:Name="MaxAmountEntry" Placeholder="Max Amount" Keyboard="Numeric" />
+      <Entry x:Name="InterestRateEntry" Placeholder="Interest Rate (%)" Keyboard="Numeric" />
+      <Entry x:Name="TermMonthsEntry" Placeholder="Term (months)" Keyboard="Numeric" />
+      <Label Text="Currency: BGN" />
+      <Entry x:Name="FeeTypeEntry" Placeholder="Fee Type (e.g. Flat 1%)" />
+      <Entry x:Name="PaymentFreqEntry" Placeholder="Payment Frequency" />
+      <Editor x:Name="NotesEditor" Placeholder="Notes (optional)" HeightRequest="80" />
+      <Button Text="Save Deposit" Clicked="OnSaveClicked" HorizontalOptions="Fill" />
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>
