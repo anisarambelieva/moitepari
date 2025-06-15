@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoitePari.Web", "MoitePari.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoitePari.BusinessLogic", "MoitePari.BusinessLogic\MoitePari.BusinessLogic.csproj", "{93BAA5B7-84F0-46EB-AEB6-A00D55330C63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoitePari.BusinessLogic.Tests", "MoitePari.BusinessLogic.Tests\MoitePari.BusinessLogic.Tests.csproj", "{91714510-B480-4E57-ABB6-DEE9CD7940D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{93BAA5B7-84F0-46EB-AEB6-A00D55330C63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93BAA5B7-84F0-46EB-AEB6-A00D55330C63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93BAA5B7-84F0-46EB-AEB6-A00D55330C63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91714510-B480-4E57-ABB6-DEE9CD7940D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91714510-B480-4E57-ABB6-DEE9CD7940D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91714510-B480-4E57-ABB6-DEE9CD7940D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91714510-B480-4E57-ABB6-DEE9CD7940D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
