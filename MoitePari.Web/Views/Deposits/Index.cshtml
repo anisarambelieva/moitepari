@@ -1,0 +1,87 @@
+@model IEnumerable<MoitePari.BusinessLogic.Models.DepositModel>
+
+@{
+    ViewData["Title"] = "Deposit Catalog";
+    // pull sticky query values
+    var amtQuery  = Context.Request.Query["amount"].ToString();
+    var termQuery = Context.Request.Query["termMonths"].ToString();
+}
+
+<div class="container my-5">
+
+  <!-- Hero/filter area -->
+  <div class="row align-items-center mb-4">
+    <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+      <h1 class="h2">Срочен депозит</h1>
+      <p class="text-muted">Намерете най-добрата оферта за вашите нужди</p>
+      <p class="small">
+        <i class="bi bi-check2-circle text-success"></i> Сравнете наличните депозити<br/>
+        <i class="bi bi-check2-circle text-success"></i> Изберете условията си<br/>
+        <i class="bi bi-check2-circle text-success"></i> Вижте разплащателен план
+      </p>
+    </div>
+    <div class="col-md-8">
+      <form class="row g-3" method="get">
+        <div class="col-sm-6 col-lg-3">
+          <label for="amount" class="form-label">Размер на депозита</label>
+          <input
+            type="number"
+            name="amount"
+            id="amount"
+            class="form-control"
+            placeholder="напр. 10000"
+            value="@amtQuery" />
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <label for="termMonths" class="form-label">Срок (месеци)</label>
+          <select name="termMonths" id="termMonths" class="form-select">
+            <option value="">Всички</option>
+            @{
+                var options = new[] { 6, 12, 24 };
+                foreach (var t in options)
+                {
+                    var sel = termQuery == t.ToString() ? " selected" : "";
+                    @:<option value="@t"@sel>@t</option>
+                }
+            }
+          </select>
+        </div>
+        <div class="col-sm-6 col-lg-3 align-self-end">
+          <button type="submit" class="btn btn-warning w-100">
+            СРАВНИ ОФЕРТИ
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Results grid -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    @foreach (var d in Model)
+    {
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">@d.Name</h5>
+            <dl class="row mb-2">
+              <dt class="col-5">Минимум</dt>
+              <dd class="col-7">@d.MinAmount:C</dd>
+              <dt class="col-5">Максимум</dt>
+              <dd class="col-7">@d.MaxAmount:C</dd>
+              <dt class="col-5">Лихва</dt>
+              <dd class="col-7">@d.InterestRate:F2 %</dd>
+              <dt class="col-5">Срок</dt>
+              <dd class="col-7">@d.TermMonths мес.</dd>
+            </dl>
+            <a asp-action="Calculate"
+               asp-route-id="@d.Id"
+               class="btn btn-primary w-100">
+              Изчисли план
+            </a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+</div>

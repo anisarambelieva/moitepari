@@ -1,0 +1,23 @@
+@model MoitePari.BusinessLogic.Models.DepositModel
+
+<h2>Calculate Deposit</h2>
+<form asp-action="Calculate" method="post">
+  <input type="hidden" asp-for="MinAmount" />
+  <input type="hidden" asp-for="MaxAmount" />
+  <input type="hidden" asp-for="InterestRate" />
+  <input type="hidden" asp-for="TermMonths" />
+  <input type="hidden" asp-for="FeePercentage" />
+
+<div>
+  <label for="amount">Amount</label>
+  <input id="amount" name="amount" type="number"
+         min="@Model.MinAmount" max="@Model.MaxAmount" />
+</div>
+<div>
+  <label for="termMonths">Term (months)</label>
+  <input id="termMonths" name="termMonths" type="number"
+         value="@Model.TermMonths" readonly />
+</div>
+
+  <button type="submit">Compute Plan</button>
+</form>
