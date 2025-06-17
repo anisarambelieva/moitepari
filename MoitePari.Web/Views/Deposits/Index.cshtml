@@ -65,11 +65,11 @@
             <h5 class="card-title">@d.Name</h5>
             <dl class="row mb-2">
               <dt class="col-5">Минимум</dt>
-              <dd class="col-7">@d.MinAmount:C</dd>
+              <dd class="col-7">@($"{d.MinAmount:F2} лв.")</dd>
               <dt class="col-5">Максимум</dt>
-              <dd class="col-7">@d.MaxAmount:C</dd>
+              <dd class="col-7">@($"{d.MaxAmount:F2} лв.")</dd>
               <dt class="col-5">Лихва</dt>
-              <dd class="col-7">@d.InterestRate:F2 %</dd>
+              <dd class="col-7">@($"{d.InterestRate:F2} %")</dd>
               <dt class="col-5">Срок</dt>
               <dd class="col-7">@d.TermMonths мес.</dd>
             </dl>

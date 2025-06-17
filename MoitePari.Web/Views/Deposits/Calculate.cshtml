@@ -1,6 +1,6 @@
 @model MoitePari.BusinessLogic.Models.DepositModel
 
-<h2>Calculate Deposit</h2>
+<h2>Изчисли депозит</h2>
 <form asp-action="Calculate" method="post">
   <input type="hidden" asp-for="MinAmount" />
   <input type="hidden" asp-for="MaxAmount" />
@@ -9,15 +9,15 @@
   <input type="hidden" asp-for="FeePercentage" />
 
 <div>
-  <label for="amount">Amount</label>
+  <label for="amount">Сума</label>
   <input id="amount" name="amount" type="number"
          min="@Model.MinAmount" max="@Model.MaxAmount" />
 </div>
 <div>
-  <label for="termMonths">Term (months)</label>
+  <label for="termMonths">Срок (месеци)</label>
   <input id="termMonths" name="termMonths" type="number"
          value="@Model.TermMonths" readonly />
 </div>
 
-  <button type="submit">Compute Plan</button>
+  <button type="submit">Изчисли</button>
 </form>
