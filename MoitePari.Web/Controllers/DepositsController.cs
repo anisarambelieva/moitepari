@@ -5,18 +5,31 @@ using MySqlConnector;
 
 namespace MoitePari.Web.Controllers
 {
+    /// <summary>
+    /// Handles HTTP requests related to bank deposit products, including listing,
+    /// retrieving, and calculating repayment plans.
+    /// </summary>
     public class DepositsController : Controller
     {
-        readonly MySqlConnection _db;
-        readonly DepositCalculator _calc;
+        private readonly MySqlConnection _db;
+        private readonly DepositCalculator _calc;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DepositsController"/> class
+        /// with a database connection and a calculator for deposit computations.
+        /// </summary>
+        /// <param name="db">The active MySQL database connection.</param>
+        /// <param name="calc">An instance of <see cref="DepositCalculator"/> used to compute plans.</param>
         public DepositsController(MySqlConnection db, DepositCalculator calc)
         {
             _db = db;
             _calc = calc;
         }
 
-        // GET /Deposits
+        /// <summary>
+        /// Displays a list of all available deposit products.
+        /// </summary>
+        /// <returns>An HTML view with a list of <see cref="DepositModel"/> items.</returns>
         public async Task<IActionResult> Index()
         {
             var list = new List<DepositModel>();
@@ -58,13 +71,16 @@ namespace MoitePari.Web.Controllers
                     TermMonths = rdr.GetInt32("term_months"),
                     FeePercentage = feePct
                 });
-
             }
 
             return View(list);
         }
 
-        // GET /Deposits/Calculate/{id}
+        /// <summary>
+        /// Displays a form for calculating a repayment plan for the selected deposit product.
+        /// </summary>
+        /// <param name="id">The ID of the deposit product to calculate.</param>
+        /// <returns>A view with pre-filled product data or NotFound if not found.</returns>
         public async Task<IActionResult> Calculate(int id)
         {
             using var cmd = new MySqlCommand(
@@ -100,7 +116,14 @@ namespace MoitePari.Web.Controllers
             return View(product);
         }
 
-        // POST /Deposits/Calculate
+        /// <summary>
+        /// Processes the user's input and generates a repayment plan based on the
+        /// selected deposit and input amount/term.
+        /// </summary>
+        /// <param name="product">The deposit product selected by the user.</param>
+        /// <param name="amount">The deposit amount entered by the user.</param>
+        /// <param name="termMonths">The term in months entered by the user.</param>
+        /// <returns>A view displaying the calculated repayment plan.</returns>
         [HttpPost]
         public IActionResult Calculate(
             [FromForm] DepositModel product,

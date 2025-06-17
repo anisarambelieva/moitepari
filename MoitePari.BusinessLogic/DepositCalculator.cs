@@ -2,11 +2,22 @@ using MoitePari.BusinessLogic.Models;
 
 namespace MoitePari.BusinessLogic
 {
+    /// <summary>
+    /// Provides logic for calculating interest, fees, and net payout
+    /// for a given deposit product based on input parameters.
+    /// </summary>
     public class DepositCalculator
     {
         /// <summary>
-        /// Calculates interest and fee for a given deposit product and input amount/term.
+        /// Calculates the repayment plan for a deposit, including
+        /// interest earned and applicable fee.
         /// </summary>
+        /// <param name="product">The deposit product definition with interest rate, fee, and constraints.</param>
+        /// <param name="amount">The principal amount the user wants to deposit.</param>
+        /// <param name="termMonths">The deposit term in months. Must match the term defined by the product.</param>
+        /// <returns>A <see cref="RepaymentPlan"/> object containing the principal, total interest, and fee.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown if the amount is outside the allowed range.</exception>
+        /// <exception cref="ArgumentException">Thrown if the term does not match the product's allowed term.</exception>
         public RepaymentPlan Calculate(
             DepositModel product,
             decimal amount,
