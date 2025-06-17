@@ -1,11 +1,11 @@
 @model MoitePari.BusinessLogic.Models.RepaymentPlan
 
-<h1>Repayment Plan</h1>
+<h2>План за изплащане</h2>
 <ul>
-  <li>Principal: @Model.Principal</li>
-  <li>Total Interest: @Model.TotalInterest</li>
-  <li>Fee: @Model.FeeAmount</li>
-  <li><strong>Net Payout:</strong> @Model.NetPayout</li>
+  <li>Главница: @Model.Principal</li>
+  <li>Обща лихва: @Model.TotalInterest</li>
+  <li>Такса: @Model.FeeAmount</li>
+  <li><strong>Нетна изплатена сума:</strong> @Model.NetPayout</li>
 </ul>
 
-<a asp-action="Index">Back to catalog</a>
+<a asp-action="Index">Назад към каталога</a>
